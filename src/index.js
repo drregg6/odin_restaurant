@@ -16,7 +16,7 @@
 
 */
 
-const CONTENT = document.querySelector('#content');
+let CONTENT = document.querySelector('#content');
 console.log(CONTENT);
 
 const createElement = () => {
@@ -29,5 +29,3 @@ const createElement = () => {
 const HEADER = createElement();
 console.log(HEADER);
 CONTENT.appendChild(HEADER);
-
-console.log('hello world!');

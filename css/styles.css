@@ -35,4 +35,5 @@ header {
 .sub-element {
   padding: 1rem;
   border: 1px dashed green;
+  width: 30%;
 }

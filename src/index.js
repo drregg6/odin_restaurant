@@ -1,4 +1,5 @@
 const createAnElement = require('../utils/createAnElement');
+let aboutP = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mollis congue mauris malesuada aliquam. Aliquam dapibus, dolor non euismod porttitor, lectus nisi interdum lacus, non tincidunt ligula dolor non mauris. Morbi sit amet felis dolor. Aenean nisl nulla, pulvinar at sem et, molestie laoreet dui. Morbi eu mattis libero. Duis fringilla iaculis finibus. Suspendisse vel neque elit. Nulla volutpat euismod velit. Etiam facilisis non sapien vel pretium. Sed sit amet dui quam. Integer fringilla pulvinar gravida. Aliquam mattis mattis elit non ultricies. In sed risus suscipit, dictum dolor et, feugiat metus. Maecenas laoreet cursus interdum. Duis vel lectus tempor, aliquet erat eget, ullamcorper ex. ';
 
 // Select
 let CONTENT = document.querySelector('#content');
@@ -18,7 +19,7 @@ for (let i = 0; i < 3; i++) {
   if (i === 0) {
     element.classList.add('about');
   } else if (i === 1) {
-    element.classList.add('hours');
+    element.classList.add('image');
   } else {
     element.classList.add('contact');
   }
@@ -41,14 +42,15 @@ CONTENT.appendChild(CONTAINER);
 // Add Content
 const ABOUT = document.querySelector('.about');
 const ABOUT_H2 = createAnElement('h2', 'About');
-const ABOUT_P = createAnElement('p', 'This is the about section');
+const ABOUT_P = createAnElement('p', aboutP);
 ABOUT.appendChild(ABOUT_H2);
 ABOUT.appendChild(ABOUT_P);
-const HOURS = document.querySelector('.hours');
-const HOURS_H2 = createAnElement('h2', 'Hours');
-const HOURS_P = createAnElement('p', 'This is the hours section');
-HOURS.appendChild(HOURS_H2);
-HOURS.appendChild(HOURS_P);
+
+const IMAGE = document.querySelector('.image');
+const IMG = createAnElement('img');
+IMG.setAttribute('src', '../images/random.jpg');
+IMAGE.appendChild(IMG);
+
 const CONTACT = document.querySelector('.contact');
 const CONTACT_H2 = createAnElement('h2', 'Contact');
 const CONTACT_P = createAnElement('p', 'This is the contact section');

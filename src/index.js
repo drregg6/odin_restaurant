@@ -4,13 +4,28 @@ let aboutP = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mo
 // Select
 let CONTENT = document.querySelector('#content');
 let subElements = [];
+let menuItems = [];
 
 // Create
 const HEADER = createAnElement('header');
 const H1 = createAnElement('h1', 'The Odin Restaurant');
-const SUBHEADER = createAnElement('div');
-SUBHEADER.classList.add('subheader');
-const SUBHEADER_P = createAnElement('p', 'This is a subheader');
+
+const NAV = createAnElement('nav');
+NAV.classList.add('nav');
+const UL = createAnElement('ul');
+for (let i = 0; i < 3; i++) {
+  let li = createAnElement('li');
+  li.classList.add('nav-item');
+  if (i === 0) {
+    li.innerHTML = '<a href="#">Home</a>'
+  } else if (i === 1) {
+    li.innerHTML = '<a href="#">About</a>'
+  } else {
+    li.innerHTML = '<a href="#">Contact</a>'
+  }
+  menuItems.push(li);
+}
+
 const CONTAINER = createAnElement('div');
 CONTAINER.classList.add('container');
 for (let i = 0; i < 3; i++) {
@@ -29,13 +44,16 @@ for (let i = 0; i < 3; i++) {
 
 // Append Elements
 HEADER.appendChild(H1);
-SUBHEADER.appendChild(SUBHEADER_P);
 for (let i = 0; i < subElements.length; i++) {
   CONTAINER.appendChild(subElements[i]);
 }
+for (let i = 0; i < menuItems.length; i++) {
+  UL.appendChild(menuItems[i]);
+}
+NAV.appendChild(UL);
 
-CONTENT.prepend(HEADER);
-CONTENT.appendChild(SUBHEADER);
+CONTENT.appendChild(HEADER);
+CONTENT.appendChild(NAV);
 CONTENT.appendChild(CONTAINER);
 
 

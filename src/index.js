@@ -32,11 +32,14 @@ for (let i = 0; i < 3; i++) {
   let element = createAnElement('div');
   element.classList.add('sub-element');
   if (i === 0) {
-    element.classList.add('about');
+    element.classList.add('about', 'hide');
+    element.setAttribute('id', 'about');
   } else if (i === 1) {
-    element.classList.add('image');
+    element.classList.add('home', 'hide');
+    element.setAttribute('id', 'home');
   } else {
-    element.classList.add('contact');
+    element.classList.add('contact', 'hide');
+    element.setAttribute('id', 'contact');
   }
   subElements.push(element);
 }
@@ -64,7 +67,7 @@ const ABOUT_P = createAnElement('p', aboutP);
 ABOUT.appendChild(ABOUT_H2);
 ABOUT.appendChild(ABOUT_P);
 
-const IMAGE = document.querySelector('.image');
+const IMAGE = document.querySelector('.home');
 const IMG = createAnElement('img');
 IMG.setAttribute('src', '../images/random.jpg');
 IMAGE.appendChild(IMG);
@@ -74,3 +77,18 @@ const CONTACT_H2 = createAnElement('h2', 'Contact');
 const CONTACT_P = createAnElement('p', 'This is the contact section');
 CONTACT.appendChild(CONTACT_H2);
 CONTACT.appendChild(CONTACT_P);
+
+
+// Event Listeners
+const LINKS = document.querySelectorAll('a');
+for (let i = 0; i < LINKS.length; i++) {
+  LINKS[i].addEventListener('click', function() {
+    let id = `#${LINKS[i].innerText.toLowerCase()}`;
+    let el = document.querySelector(id);
+    
+    subElements.forEach(element => {
+      element.classList.remove('show');
+    });
+    el.classList.add('show');
+  });
+}

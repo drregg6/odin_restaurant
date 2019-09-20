@@ -1,5 +1,18 @@
+/*
+
+Assignment calls for each item from the menu
+To be placed in its own module
+Then when the link is clicked
+The module should fire the content of the element
+
+
+*/
+
+
 const createAnElement = require('../utils/createAnElement');
-let aboutP = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mollis congue mauris malesuada aliquam. Aliquam dapibus, dolor non euismod porttitor, lectus nisi interdum lacus, non tincidunt ligula dolor non mauris. Morbi sit amet felis dolor. Aenean nisl nulla, pulvinar at sem et, molestie laoreet dui. Morbi eu mattis libero. Duis fringilla iaculis finibus. Suspendisse vel neque elit. Nulla volutpat euismod velit. Etiam facilisis non sapien vel pretium. Sed sit amet dui quam. Integer fringilla pulvinar gravida. Aliquam mattis mattis elit non ultricies. In sed risus suscipit, dictum dolor et, feugiat metus. Maecenas laoreet cursus interdum. Duis vel lectus tempor, aliquet erat eget, ullamcorper ex. ';
+const aboutModule = require('../utils/aboutModule');
+const homeModule = require('../utils/homeModule');
+const contactModule = require('../utils/contactModule');
 
 // Select
 let CONTENT = document.querySelector('#content');
@@ -61,34 +74,54 @@ CONTENT.appendChild(CONTAINER);
 
 
 // Add Content
-const ABOUT = document.querySelector('.about');
-const ABOUT_H2 = createAnElement('h2', 'About');
-const ABOUT_P = createAnElement('p', aboutP);
-ABOUT.appendChild(ABOUT_H2);
-ABOUT.appendChild(ABOUT_P);
+// const ABOUT = document.querySelector('.about');
+// const ABOUT_H2 = createAnElement('h2', 'About');
+// const ABOUT_P = createAnElement('p', aboutP);
+// ABOUT.appendChild(ABOUT_H2);
+// ABOUT.appendChild(ABOUT_P);
 
-const IMAGE = document.querySelector('.home');
-const IMG = createAnElement('img');
-IMG.setAttribute('src', '../images/random.jpg');
-IMAGE.appendChild(IMG);
+// const IMAGE = document.querySelector('.home');
+// const IMG = createAnElement('img');
+// IMG.setAttribute('src', '../images/random.jpg');
+// IMAGE.appendChild(IMG);
 
-const CONTACT = document.querySelector('.contact');
-const CONTACT_H2 = createAnElement('h2', 'Contact');
-const CONTACT_P = createAnElement('p', 'This is the contact section');
-CONTACT.appendChild(CONTACT_H2);
-CONTACT.appendChild(CONTACT_P);
+// const CONTACT = document.querySelector('.contact');
+// const CONTACT_H2 = createAnElement('h2', 'Contact');
+// const CONTACT_P = createAnElement('p', 'This is the contact section');
+// CONTACT.appendChild(CONTACT_H2);
+// CONTACT.appendChild(CONTACT_P);
 
 
 // Event Listeners
 const LINKS = document.querySelectorAll('a');
-for (let i = 0; i < LINKS.length; i++) {
-  LINKS[i].addEventListener('click', function() {
-    let id = `#${LINKS[i].innerText.toLowerCase()}`;
-    let el = document.querySelector(id);
+LINKS[0].addEventListener('click', function() {
+  while (CONTAINER.firstChild) {
+    CONTAINER.removeChild(CONTAINER.firstChild);
+  }
+  CONTAINER.appendChild(homeModule());
+});
+LINKS[1].addEventListener('click', function() {
+  while (CONTAINER.firstChild) {
+    CONTAINER.removeChild(CONTAINER.firstChild);
+  }
+  CONTAINER.appendChild(aboutModule());
+});
+LINKS[2].addEventListener('click', function() {
+  while (CONTAINER.firstChild) {
+    CONTAINER.removeChild(CONTAINER.firstChild);
+  }
+  CONTAINER.appendChild(contactModule());
+});
+// LINKS[1].addEventListener('click', aboutModule);
+// LINKS[2].addEventListener('click', contactModule);
+// for (let i = 0; i < LINKS.length; i++) {
+//   LINKS[i].addEventListener('click', function() {
+//     let id = `#${LINKS[i].innerText.toLowerCase()}`;
+//     let el = document.querySelector(id);
     
-    subElements.forEach(element => {
-      element.classList.remove('show');
-    });
-    el.classList.add('show');
-  });
-}
+//     subElements.forEach(element => {
+//       element.classList.remove('show');
+//     });
+//     el.classList.add('show');
+//   });
+// }
